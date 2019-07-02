@@ -23,6 +23,16 @@ class retailTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
+    
+    func testFetchProducts() {
+        let dataManager = ListDataManager()
+        let interactor = ListInteractor(dataManager: dataManager)
+        interactor.fetchProductsFromStore()
+        let products = interactor.products.value
+        
+        XCTAssert(products.count > 0, "No products found")
+        
+    }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
